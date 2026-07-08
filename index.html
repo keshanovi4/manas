@@ -1,240 +1,187 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Рейтинг КТУ Манас (с фото)</title>
-    <!-- Подключаем стабильный CDN Tailwind CSS -->
+    <title>KTU Manas – Мониторинг Рейтинга</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Плавное появление для модалки */
-        .animate-fade-in {
-            animation: fadeIn 0.2s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        /* Стилизация скроллбара таблицы на мобилках */
+        /* Кастомный ультра-тонкий скроллбар в стиле премиальных IDE */
         .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
             height: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #09090b;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #047857;
-            border-radius: 10px;
+            background: #27272a;
+            border-radius: 9999px;
         }
-        /* Стилизация заголовков факультетов внутри списка на мобилке */
-        optgroup {
-            background: #022c22 !important;
-            color: #34d399 !important;
-            font-weight: 800 !important;
-            font-style: normal;
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
         }
-        option {
-            background: #fff !important;
-            color: #1f2937 !important;
-            font-weight: 500 !important;
+        /* Анимация плавного появления контента */
+        .fade-in {
+            animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-gray-100 font-sans min-h-screen text-gray-800 antialiased selection:bg-emerald-500 selection:text-white">
+<body class="bg-[#09090b] text-zinc-100 font-sans min-h-screen antialiased selection:bg-zinc-100 selection:text-black custom-scrollbar">
 
-    <div class="flex flex-col md:flex-row min-h-screen">
+    <div class="flex flex-col lg:flex-row min-h-screen">
 
-        <!-- ========================================== -->
-        <!--  УМНОЕ НАВИГАЦИОННОЕ МЕНЮ (САЙДБАР / МОБИЛКА) -->
-        <!-- ========================================== -->
-        <div class="w-full md:w-80 bg-emerald-950 text-white p-4 md:p-6 shrink-0 shadow-xl md:max-h-screen md:overflow-y-auto flex flex-col justify-between">
+        <div class="w-full lg:w-96 bg-[#09090b] lg:border-r border-zinc-800/60 p-5 md:p-6 shrink-0 lg:max-h-screen lg:overflow-y-auto custom-scrollbar flex flex-col justify-between gap-8">
             <div>
-                <!-- Шапка сайта -->
-                <div class="mb-5 border-b border-emerald-800 pb-4 text-center md:text-left">
-                    <h1 class="text-xl md:text-2xl font-black tracking-wider text-emerald-400">КТУ МАНАС</h1>
-                    <p class="text-xs text-emerald-200/70 mt-1 font-medium">Зеркало мониторинга абитуриентов</p>
+                <div class="mb-6 pb-5 border-b border-zinc-800/50 flex items-center justify-between">
+                    <div>
+                        <h1 class="text-lg font-black tracking-tight text-white uppercase">KTU MANAS</h1>
+                        <p class="text-[11px] text-zinc-500 font-medium mt-0.5 tracking-wide">Архитектура верификации данных</p>
+                    </div>
+                    <div class="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 px-2 py-1 rounded-md">
+                        <span class="w-1.5 h-1.5 rounded-full bg-zinc-400 animate-pulse"></span>
+                        <span class="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">v2.0-live</span>
+                    </div>
                 </div>
 
-                <!-- МОБИЛЬНЫЙ ИНТЕРФЕЙС: Один список с делением по факультетам (скрыт на ПК) -->
-                <div class="block md:hidden mb-2">
-                    <label class="block text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">Выберите Направление:</label>
-                    <select id="mobile-dep-select" onchange="onMobileDepChange()" class="w-full bg-emerald-900 border border-emerald-700 rounded-xl px-3 py-3 text-sm font-semibold text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner">
-                        <option value="">-- Загрузка направлений --</option>
-                    </select>
+                <div class="mb-4">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-zinc-500">Направления подготовки</span>
                 </div>
 
-                <!-- ДЕСКТОПНЫЙ ИНТЕРФЕЙС: Разделение по факультетам (скрыто на мобилках) -->
-                <div id="desktop-menu" class="hidden md:block space-y-5">
-                    <p class="text-emerald-300 text-sm animate-pulse">Синхронизация базы данных...</p>
+                <div id="unified-catalog" class="space-y-6">
+                    <div class="text-xs text-zinc-500 font-mono animate-pulse">Парсинг структуры факультетов...</div>
                 </div>
             </div>
 
-            <!-- Копирайт / Инфо внизу меню -->
-            <div class="hidden md:block text-[11px] text-emerald-300/40 border-t border-emerald-900 pt-4 mt-6">
-                Разработано для удобного просмотра рейтингов и верификации данных.
+            <div class="hidden lg:block text-[10px] font-mono text-zinc-600 border-t border-zinc-900 pt-4">
+                Designed by UX/UI Engineers. Built for high performance data structures.
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!--           ОСНОВНАЯ ЗОНА С ТАБЛИЦЕЙ         -->
-        <!-- ========================================== -->
-        <div class="flex-1 p-3 sm:p-6 md:p-8 md:max-h-screen md:overflow-y-auto">
+        <div id="data-workspace" class="flex-1 p-4 md:p-8 lg:max-h-screen lg:overflow-y-auto custom-scrollbar flex flex-col">
 
-            <!-- Информационная карточка выбранного направления -->
-            <div id="current-info" class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 mb-4 sm:mb-6 hidden">
-                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                    <div>
-                        <span id="info-faculty" class="inline-block bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border border-emerald-200/60 mb-1"></span>
-                        <h3 id="info-dep" class="text-base sm:text-xl font-bold text-gray-900 tracking-tight"></h3>
+            <div id="current-info" class="bg-[#121214] p-5 rounded-xl border border-zinc-800/80 mb-5 hidden fade-in">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="space-y-1">
+                        <div id="info-faculty" class="text-[10px] font-mono font-bold uppercase tracking-widest text-zinc-400 bg-zinc-900 border border-zinc-800 px-2 py-0.5 rounded inline-block"></div>
+                        <h3 id="info-dep" class="text-base sm:text-lg font-bold text-white tracking-tight"></h3>
                     </div>
-                    <div id="info-count" class="text-xs sm:text-sm font-semibold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-xl border self-start sm:self-auto"></div>
+                    <div id="info-count" class="text-xs font-mono font-bold bg-zinc-900 text-zinc-300 border border-zinc-800/80 px-3 py-1.5 rounded-lg self-start sm:self-auto"></div>
                 </div>
             </div>
 
-            <!-- Контейнер таблицы с горизонтальным скроллом -->
-            <div id="table-card" class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-200 hidden">
-                <div class="overflow-x-auto custom-scrollbar">
+            <div id="table-card" class="bg-[#121214] rounded-xl border border-zinc-800/80 overflow-hidden hidden flex-1 flex flex-col fade-in">
+                <div class="overflow-x-auto custom-scrollbar flex-1">
                     <table class="w-full text-left border-collapse text-xs sm:text-sm">
                         <thead>
-                            <tr class="bg-gray-50/70 border-b border-gray-200 text-gray-500 font-bold uppercase text-[10px] tracking-wider sticky top-0 bg-white z-10">
-                                <th class="p-3 text-center w-12 sm:w-16">№</th>
-                                <th class="p-3">Регистрационный №</th>
-                                <th class="p-3">Баллы</th>
-                                <th class="p-3">Иностраный Язык</th>
-                                <th class="p-3 hidden sm:table-cell">Дата регистрации</th>
+                            <tr class="bg-[#161619]/60 border-b border-zinc-800 text-zinc-400 font-mono text-[10px] tracking-wider uppercase sticky top-0 bg-[#121214] z-10">
+                                <th class="p-3.5 text-center w-12 sm:w-16 text-zinc-600">№</th>
+                                <th class="p-3.5">Регистрационный номер</th>
+                                <th class="p-3.5 font-semibold">Баллы ОРТ</th>
+                                <th class="p-3.5">Иностранный язык</th>
+                                <th class="p-3.5 hidden md:table-cell text-zinc-500">Дата фиксации</th>
                             </tr>
                         </thead>
-                        <tbody id="table-body" class="divide-y divide-gray-100">
-                            <!-- Сюда JS вставит строки -->
-                        </tbody>
+                        <tbody id="table-body" class="divide-y divide-zinc-800/40 font-medium">
+                            </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- Экран приветствия (пока ничего не выбрано) -->
-            <div id="welcome-message" class="flex flex-col items-center justify-center min-h-[50vh] text-center p-4">
-                <div class="bg-emerald-50 text-emerald-700 p-4 rounded-full mb-3 border border-emerald-100">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            <div id="welcome-message" class="flex-1 flex flex-col items-center justify-center text-center p-8 min-h-[50vh]">
+                <div class="w-12 h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mb-4 text-zinc-400">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5"></path></svg>
                 </div>
-                <h3 class="text-gray-800 font-bold text-base sm:text-lg">База данных готова</h3>
-                <p class="text-gray-400 text-xs sm:text-sm max-w-sm mt-1">Выберите интересующий факультет и направление, чтобы открыть интерактивный список с фотографиями.</p>
+                <h3 class="text-white font-bold text-sm tracking-tight">Терминал готов к работе</h3>
+                <p class="text-zinc-500 text-xs max-w-xs mt-1 leading-relaxed">Выберите интересующее направление в левом списке каталога для мгновенной выгрузки данных и верификации фото.</p>
             </div>
 
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!--     МОБИЛЬНО-ОПТИМИЗИРОВАННАЯ МОД АЛКА      -->
-    <!-- ========================================== -->
-    <div id="photo-modal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4" onclick="closeModal()">
-        <div class="bg-white rounded-3xl p-4 max-w-[290px] sm:max-w-xs w-full relative shadow-2xl border border-gray-100 animate-fade-in" onclick="event.stopPropagation()">
+    <div id="photo-modal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-4" onclick="closeModal()">
+        <div class="bg-[#121214] rounded-2xl p-4 max-w-[290px] sm:max-w-xs w-full relative shadow-2xl border border-zinc-800/80 fade-in" onclick="event.stopPropagation()">
 
-            <!-- Кнопка закрытия -->
-            <button class="absolute top-3 right-4 text-gray-400 hover:text-gray-700 text-2xl font-light cursor-pointer active:scale-95 transition-transform" onclick="closeModal()">×</button>
+            <button class="absolute top-3 right-4 text-zinc-500 hover:text-white text-xl font-light cursor-pointer transition-colors focus:outline-none" onclick="closeModal()">✕</button>
 
-            <div class="text-center mb-2">
-                <span id="modal-title-id" class="text-xs font-bold text-gray-400 tracking-widest uppercase">АБИТУРИЕНТ</span>
+            <div class="text-center mb-2.5">
+                <span id="modal-title-id" class="text-[10px] font-mono font-bold text-zinc-500 tracking-widest uppercase">ID ДОКУМЕНТА</span>
             </div>
 
-            <!-- Рамка под фото (пропорции 3:4) -->
-            <div class="rounded-2xl overflow-hidden border border-gray-100 bg-gray-50 flex items-center justify-center aspect-[3/4] shadow-inner relative group">
-                <img id="modal-img" src="" alt="Фото" class="w-full h-full object-cover">
+            <div class="rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950 flex items-center justify-center aspect-[3/4] relative shadow-inner">
+                <img id="modal-img" src="" alt="Верификация" class="w-full h-full object-cover grayscale contrast-[1.05] hover:grayscale-0 transition-all duration-300">
             </div>
 
-            <button class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold py-3 rounded-2xl text-sm transition-colors cursor-pointer shadow-sm shadow-emerald-700/20" onclick="closeModal()">
-                Закрыть окно
+            <button class="mt-4 w-full bg-zinc-100 hover:bg-white text-black font-bold py-2.5 rounded-xl text-xs transition-all cursor-pointer shadow-sm active:scale-[0.99]" onclick="closeModal()">
+                Закрыть верификацию
             </button>
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!--               ЛОГИКА НА JS                 -->
-    <!-- ========================================== -->
     <script>
         let db = {};
-        let activeActiveBtn = null;
+        let currentActiveButton = null;
 
         async function init() {
             try {
                 const response = await fetch('data.json');
                 db = await response.json();
 
-                renderDesktopMenu();
-                initMobileGroupedSelector();
+                renderUnifiedCatalog();
             } catch (error) {
-                console.error("Ошибка инициализации приложения:", error);
-                document.getElementById('desktop-menu').innerHTML = `<p class="text-red-400 text-xs font-medium">Критическая ошибка загрузки данных.</p>`;
+                console.error("Критический сбой инициализации:", error);
+                document.getElementById('unified-catalog').innerHTML = `<p class="text-red-400 text-xs font-mono">Fail: Ошибка чтения data.json</p>`;
             }
         }
 
-        // --- ДЕСКТОП: Рендеринг структуры по факультетам ---
-        function renderDesktopMenu() {
-            const menu = document.getElementById('desktop-menu');
-            if (!menu) return;
-            menu.innerHTML = '';
+        // --- Генерация единого, открытого списка по факультетам ---
+        function renderUnifiedCatalog() {
+            const container = document.getElementById('unified-catalog');
+            if (!container) return;
+            container.innerHTML = '';
 
             for (const faculty in db) {
-                const block = document.createElement('div');
-                block.className = 'border-b border-emerald-900/40 pb-2';
+                const facultyBlock = document.createElement('div');
+                facultyBlock.className = 'space-y-1.5';
 
-                const title = document.createElement('div');
-                title.className = 'text-[10px] font-black tracking-wider text-emerald-400 uppercase mb-2 break-words leading-tight opacity-90';
-                title.innerText = faculty;
-                block.appendChild(title);
+                // Заголовок факультета (как на скриншоте 121a1c.png)
+                const header = document.createElement('div');
+                header.className = 'text-[10px] font-bold tracking-wider text-zinc-400 uppercase font-mono border-l-2 border-zinc-700 pl-2 py-0.5 mb-2';
+                header.innerText = faculty;
+                facultyBlock.appendChild(header);
 
-                const list = document.createElement('ul');
-                list.className = 'space-y-0.5';
-
-                for (const dep in db[faculty]) {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <button onclick="selectDepartment('${escapeStr(faculty)}', '${escapeStr(dep)}', this)" class="w-full text-left py-1.5 px-2.5 rounded-xl hover:bg-emerald-900/60 text-emerald-100/90 transition-all cursor-pointer text-xs font-medium truncate block border border-transparent hover:border-emerald-800/30">
-                            ${dep}
-                        </button>
-                    `;
-                    list.appendChild(li);
-                }
-                block.appendChild(list);
-                menu.appendChild(block);
-            }
-        }
-
-        // --- МОБИЛКА: Заполнение ОДНОГО списка с разделением по факультетам (как на фото) ---
-        function initMobileGroupedSelector() {
-            const depSelect = document.getElementById('mobile-dep-select');
-            if (!depSelect) return;
-
-            depSelect.innerHTML = '<option value="">-- Выберите направление --</option>';
-
-            for (const faculty in db) {
-                // Создаем группу факультета
-                const group = document.createElement('optgroup');
-                group.label = faculty; // Жирный заголовок факультета в списке
+                const list = document.createElement('div');
+                list.className = 'flex flex-col gap-0.5';
 
                 for (const dep in db[faculty]) {
-                    const opt = document.createElement('option');
-                    // Упаковываем факультет и направление в JSON-строку, чтобы передать в функцию выбора
-                    opt.value = JSON.stringify({ faculty: faculty, dep: dep });
-                    opt.innerText = dep;
-                    group.appendChild(opt);
+                    const btn = document.createElement('button');
+                    // Стилизация кнопок под high-end монохромный интерфейс
+                    btn.className = 'w-full text-left py-2 px-3 rounded-lg text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/60 transition-all text-xs font-medium truncate block border border-transparent focus:outline-none cursor-pointer';
+                    btn.innerText = dep;
+
+                    btn.onclick = (e) => {
+                        selectDepartment(faculty, dep, btn);
+                        // Умный автоскролл к таблице на мобильных устройствах
+                        if (window.innerWidth < 1024) {
+                            document.getElementById('data-workspace').scrollIntoView({ behavior: 'smooth' });
+                        }
+                    };
+
+                    list.appendChild(btn);
                 }
-                depSelect.appendChild(group);
+                facultyBlock.appendChild(list);
+                container.appendChild(facultyBlock);
             }
         }
 
-        // Срабатывает при выборе направления на телефоне
-        function onMobileDepChange() {
-            const depSelect = document.getElementById('mobile-dep-select');
-            if (depSelect && depSelect.value) {
-                const parsedData = JSON.parse(depSelect.value);
-                selectDepartment(parsedData.faculty, parsedData.dep, null);
-            }
-        }
-
-        // --- ОБЩЕЕ: Безопасная логика выбора направления ---
+        // --- Логика обработки и вывода данных ---
         function selectDepartment(faculty, dep, element) {
             try {
-                // Показываем интерфейс карточек
+                // Переключение экранов системы
                 document.getElementById('welcome-message').classList.add('hidden');
                 document.getElementById('current-info').classList.remove('hidden');
                 document.getElementById('table-card').classList.remove('hidden');
@@ -243,66 +190,70 @@
                 document.getElementById('info-dep').innerText = dep;
 
                 const students = (db[faculty] && db[faculty][dep]) || [];
-                document.getElementById('info-count').innerText = `Всего: ${students.length}`;
+                document.getElementById('info-count').innerText = `Заявлений: ${students.length}`;
 
-                // Подсветка активного пункта меню на ПК
-                if (element && element.classList) {
-                    if (activeActiveBtn && activeActiveBtn.classList) {
-                        activeActiveBtn.classList.remove('bg-emerald-800', 'text-white', 'font-bold', 'shadow-inner');
+                // Визуальный менеджмент активного состояния кнопок (Senior approach)
+                if (element) {
+                    if (currentActiveButton) {
+                        currentActiveButton.classList.remove('bg-zinc-800', 'text-white', 'border-zinc-700/60', 'font-semibold');
+                        currentActiveButton.classList.add('text-zinc-400');
                     }
-                    element.classList.add('bg-emerald-800', 'text-white', 'font-bold', 'shadow-inner');
-                    activeActiveBtn = element;
+                    element.classList.remove('text-zinc-400');
+                    element.classList.add('bg-zinc-800', 'text-white', 'border-zinc-700/60', 'font-semibold');
+                    currentActiveButton = element;
                 }
 
                 const tbody = document.getElementById('table-body');
                 if (!tbody) return;
 
                 if (students.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-gray-400 font-medium">Нет данных абитуриентов</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-zinc-600 font-mono">Ни одной записи не обнаружено</td></tr>`;
                     return;
                 }
 
-                // Рендерим строки с жесткой защитой от undefined полей
+                // Рендеринг строк данных с прецизионной валидацией на null/undefined
                 tbody.innerHTML = students.map(st => {
-                    const id = st.id || '-';
-                    const regNum = st.regNum || '-';
-                    const score = st.score || '-';
-                    const langScore = st.langScore || '-';
-                    const regDate = st.regDate || '-';
-                    const photoUrl = st.photoUrl || '';
+                    const id = st.id ?? '-';
+                    const regNum = st.regNum ?? '-';
+                    const score = st.score ?? '-';
+                    const langScore = st.langScore ?? '-';
+                    const regDate = st.regDate ?? '-';
+                    const photoUrl = st.photoUrl ?? '';
 
                     return `
-                        <tr class="hover:bg-emerald-50/40 odd:bg-gray-50/40 transition-colors">
-                            <td class="p-3 text-center text-gray-400 font-bold">${id}</td>
-                            <td class="p-3">
-                                <button onclick="openModal('${photoUrl}', '${regNum}')" class="text-emerald-700 hover:text-emerald-900 active:text-emerald-950 font-bold tracking-wide cursor-pointer text-left block w-full py-1 focus:outline-none touch-manipulation">
-                                    ${regNum} 📱
+                        <tr class="hover:bg-zinc-900/30 odd:bg-zinc-900/10 transition-colors border-b border-zinc-900/40">
+                            <td class="p-3.5 text-center font-mono text-zinc-600 font-bold">${id}</td>
+                            <td class="p-3.5">
+                                <button onclick="openModal('${photoUrl}', '${regNum}')" class="text-zinc-100 hover:text-white font-mono font-bold tracking-wide cursor-pointer text-left underline decoration-zinc-700 hover:decoration-white underline-offset-4 transition-colors focus:outline-none block w-full py-0.5">
+                                    ${regNum}
                                 </button>
                             </td>
-                            <td class="p-3 font-bold text-gray-800 text-sm">${score}</td>
-                            <td class="p-3 text-gray-600 font-medium">${langScore}</td>
-                            <td class="p-3 text-gray-400 text-xs hidden sm:table-cell">${regDate}</td>
+                            <td class="p-3.5 font-bold text-white text-xs sm:text-sm tracking-tight">${score}</td>
+                            <td class="p-3.5 text-zinc-400 font-normal font-mono">${langScore}</td>
+                            <td class="p-3.5 text-zinc-600 text-[11px] font-mono hidden md:table-cell">${regDate}</td>
                         </tr>
                     `;
                 }).join('');
 
             } catch (err) {
-                console.error("Ошибка внутри selectDepartment:", err);
+                console.error("Runtime-ошибка в обработчике selectDepartment:", err);
                 const tbody = document.getElementById('table-body');
                 if (tbody) {
-                    tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-red-500 font-medium">Ошибка рендеринга: ${err.message}</td></tr>`;
+                    tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-red-400 font-mono">Error: ${err.message}</td></tr>`;
                 }
             }
         }
 
-        // --- УПРАВЛЕНИЕ МОДАЛЬНЫМ ОКНОМ ---
+        // --- Логика управления контекстным модальным окном ---
         function openModal(url, regNum) {
             const modal = document.getElementById('photo-modal');
             const img = document.getElementById('modal-img');
             if (!modal || !img) return;
 
-            document.getElementById('modal-title-id').innerText = `№ ${regNum}`;
+            document.getElementById('modal-title-id').innerText = `REG № ${regNum}`;
             img.src = url;
+
+            // Фоллбек на плейсхолдер высокого разрешения при отсутствии картинки
             img.onerror = () => {
                 img.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=250&h=330&q=80';
             };
@@ -315,11 +266,8 @@
             if (modal) modal.classList.add('hidden');
         }
 
-        function escapeStr(str) {
-            return str.replace(/'/g, "\\'");
-        }
-
-        init();
+        // Инициализация при готовности DOM
+        document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
 </html>
