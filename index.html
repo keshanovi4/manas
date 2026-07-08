@@ -2,153 +2,275 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Зеркало Рейтинга Абитуриентов Манас (с фото)</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Рейтинг КТУ Манас (с фото)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Плавное появление для модалки */
+        .animate-fade-in {
+            animation: fadeIn 0.2s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        /* Стилизация скроллбара таблицы на мобилках */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #047857;
+            border-radius: 10px;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 font-sans min-h-screen text-gray-800">
+<body class="bg-gray-100 font-sans min-h-screen text-gray-800 antialiased selection:bg-emerald-500 selection:text-white">
 
     <div class="flex flex-col md:flex-row min-h-screen">
 
-        <div class="w-full md:w-80 bg-emerald-900 text-white p-4 shrink-0 shadow-lg md:max-h-screen md:overflow-y-auto">
-            <div class="mb-6 border-b border-emerald-700 pb-4">
-                <h1 class="text-xl font-bold tracking-wide">КТУ Манас</h1>
-                <p class="text-xs text-emerald-300 mt-1">Мониторинг абитуриентов с фото</p>
+        <div class="w-full md:w-80 bg-emerald-950 text-white p-4 md:p-6 shrink-0 shadow-xl md:max-h-screen md:overflow-y-auto flex flex-col justify-between">
+            <div>
+                <div class="mb-5 border-b border-emerald-800 pb-4 text-center md:text-left">
+                    <h1 class="text-xl md:text-2xl font-black tracking-wider text-emerald-400">КТУ МАНАС</h1>
+                    <p class="text-xs text-emerald-200/70 mt-1 font-medium">Зеркало мониторинга абитуриентов</p>
+                </div>
+
+                <div class="block md:hidden space-y-3 mb-2">
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">1. Выберите Факультет:</label>
+                        <select id="mobile-faculty-select" onchange="onMobileFacultyChange()" class="w-full bg-emerald-900 border border-emerald-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            <option value="">-- Загрузка факультетов --</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold uppercase tracking-wider text-emerald-400 mb-1">2. Выберите Направление:</label>
+                        <select id="mobile-dep-select" onchange="onMobileDepChange()" class="w-full bg-emerald-900 border border-emerald-700 rounded-xl px-3 py-2.5 text-sm font-medium text-white focus:outline-none focus:ring-2 focus:ring-emerald-500" disabled>
+                            <option value="">-- Сначала выберите факультет --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="desktop-menu" class="hidden md:block space-y-5">
+                    <p class="text-emerald-300 text-sm animate-pulse">Синхронизация базы данных...</p>
+                </div>
             </div>
 
-            <h2 class="text-xs font-bold uppercase tracking-wider text-emerald-400 mb-3">Выберите направление:</h2>
-            <div id="menu-container" class="space-y-4 text-sm">
-                <p class="text-emerald-200 animate-pulse">Загрузка списка направлений...</p>
+            <div class="hidden md:block text-[11px] text-emerald-300/40 border-t border-emerald-900 pt-4 mt-6">
+                Разработано для удобного просмотра рейтингов и верификации данных.
             </div>
         </div>
 
-        <div class="flex-1 p-4 md:p-8 md:max-h-screen md:overflow-y-auto">
+        <div class="flex-1 p-3 sm:p-6 md:p-8 md:max-h-screen md:overflow-y-auto">
 
-            <div id="current-info" class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-6 hidden">
-                <h2 id="info-faculty" class="text-xs font-bold text-emerald-700 uppercase tracking-wider"></h2>
-                <h3 id="info-dep" class="text-xl font-bold text-gray-800 mt-1"></h3>
-                <p id="info-count" class="text-xs text-gray-500 mt-2 font-medium"></p>
+            <div id="current-info" class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-gray-200/80 mb-4 sm:mb-6 hidden">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div>
+                        <span id="info-faculty" class="inline-block bg-emerald-50 text-emerald-700 text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded-md border border-emerald-200/60 mb-1"></span>
+                        <h3 id="info-dep" class="text-base sm:text-xl font-bold text-gray-900 tracking-tight"></h3>
+                    </div>
+                    <div id="info-count" class="text-xs sm:text-sm font-semibold bg-gray-100 text-gray-600 px-3 py-1.5 rounded-xl border self-start sm:self-auto"></div>
+                </div>
             </div>
 
-            <div id="table-card" class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200 hidden">
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left border-collapse text-sm">
+            <div id="table-card" class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-200 hidden">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
                         <thead>
-                            <tr class="bg-gray-50 border-b border-gray-200 text-gray-700 font-semibold uppercase text-xs tracking-wider">
-                                <th class="p-3 text-center w-16">№</th>
-                                <th class="p-3">Регистрационный № (Кликни для фото)</th>
+                            <tr class="bg-gray-50/70 border-b border-gray-200 text-gray-500 font-bold uppercase text-[10px] tracking-wider sticky top-0 bg-white z-10">
+                                <th class="p-3 text-center w-12 sm:w-16">№</th>
+                                <th class="p-3">Регистрационный №</th>
                                 <th class="p-3">Баллы</th>
-                                <th class="p-3">Иностранный язык</th>
-                                <th class="p-3">Дата регистрации</th>
+                                <th class="p-3">Иностраный Язык</th>
+                                <th class="p-3 hidden sm:table-cell">Дата регистрации</th>
                             </tr>
                         </thead>
-                        <tbody id="table-body">
+                        <tbody id="table-body" class="divide-y divide-gray-100">
                             </tbody>
                     </table>
                 </div>
             </div>
 
-            <div id="welcome-message" class="flex flex-col items-center justify-center h-64 text-center text-gray-400">
-                <svg class="w-16 h-16 stroke-current mb-2" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
-                <p class="text-base font-medium">Выберите факультет и направление в меню слева, чтобы увидеть список абитуриентов</p>
+            <div id="welcome-message" class="flex flex-col items-center justify-center min-h-[50vh] text-center p-4">
+                <div class="bg-emerald-50 text-emerald-700 p-4 rounded-full mb-3 border border-emerald-100">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+                </div>
+                <h3 class="text-gray-800 font-bold text-base sm:text-lg">База данных готова</h3>
+                <p class="text-gray-400 text-xs sm:text-sm max-w-sm mt-1">Выберите интересующий факультет и направление, чтобы открыть интерактивный список с фотографиями.</p>
             </div>
 
         </div>
     </div>
 
-    <div id="photo-modal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModal()">
-        <div class="bg-white rounded-2xl p-4 max-w-xs w-full relative shadow-2xl animate-fade-in" onclick="event.stopPropagation()">
-            <button class="absolute top-2 right-4 text-gray-400 hover:text-gray-700 text-2xl font-bold cursor-pointer" onclick="closeModal()">×</button>
+    <div id="photo-modal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex items-center justify-center z-50 p-4" onclick="closeModal()">
+        <div class="bg-white rounded-3xl p-4 max-w-[290px] sm:max-w-xs w-full relative shadow-2xl border border-gray-100 animate-fade-in" onclick="event.stopPropagation()">
 
-            <div class="mt-4 rounded-xl overflow-hidden border border-gray-100 bg-gray-50 flex items-center justify-center aspect-[3/4] shadow-inner">
-                <img id="modal-img" src="" alt="Фото абитуриента" class="w-full h-full object-cover">
+            <button class="absolute top-3 right-4 text-gray-400 hover:text-gray-700 text-2xl font-light cursor-pointer active:scale-95 transition-transform" onclick="closeModal()">×</button>
+
+            <div class="text-center mb-2">
+                <span id="modal-title-id" class="text-xs font-bold text-gray-400 tracking-widest uppercase">АБИТУРИЕНТ</span>
             </div>
 
-            <button class="mt-4 w-full bg-emerald-700 hover:bg-emerald-800 text-white font-medium py-2.5 rounded-xl text-sm transition-colors cursor-pointer" onclick="closeModal()">
+            <div class="rounded-2xl overflow-hidden border border-gray-100 bg-gray-50 flex items-center justify-center aspect-[3/4] shadow-inner relative group">
+                <img id="modal-img" src="" alt="Фото" class="w-full h-full object-cover">
+            </div>
+
+            <button class="mt-4 w-full bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-semibold py-3 rounded-2xl text-sm transition-colors cursor-pointer shadow-sm shadow-emerald-700/20" onclick="closeModal()">
                 Закрыть окно
             </button>
         </div>
     </div>
 
     <script>
-        let globalDatabase = {};
+        let db = {};
+        let activeActiveBtn = null; // Для подсветки активной вкладки на ПК
 
-        // Загрузка большой базы данных из data.json
         async function init() {
             try {
                 const response = await fetch('data.json');
-                globalDatabase = await response.json();
-                renderMenu();
+                db = await response.json();
+
+                renderDesktopMenu();
+                initMobileSelectors();
             } catch (error) {
-                document.getElementById('menu-container').innerHTML = `<p class="text-red-400 font-medium">Ошибка загрузки data.json. Убедитесь, что скрипт-парсер успешно отработал.</p>`;
-                console.error(error);
+                console.error("Ошибка инициализации приложения:", error);
+                document.getElementById('desktop-menu').innerHTML = `<p class="text-red-400 text-xs font-medium">Критическая ошибка загрузки данных.</p>`;
             }
         }
 
-        // Построение бокового меню (Группировка Направлений по Факультетам)
-        function renderMenu() {
-            const container = document.getElementById('menu-container');
-            container.innerHTML = '';
+        // --- ДЕСКТОП: Рендеринг структуры по факультетам ---
+        function renderDesktopMenu() {
+            const menu = document.getElementById('desktop-menu');
+            menu.innerHTML = '';
 
-            for (const faculty in globalDatabase) {
-                const facultyBlock = document.createElement('div');
-                facultyBlock.className = 'border-b border-emerald-800/60 pb-3';
+            for (const faculty in db) {
+                const block = document.createElement('div');
+                block.className = 'border-b border-emerald-900/40 pb-2';
 
-                facultyBlock.innerHTML = `
-                    <div class="font-bold text-emerald-300 text-xs uppercase tracking-wider mb-2 mt-2 break-words opacity-80">${faculty}</div>
-                    <ul class="space-y-1 pl-1">
-                        ${Object.keys(globalDatabase[faculty]).map(dep => `
-                            <li>
-                                <button onclick="selectDepartment('${escapeStr(faculty)}', '${escapeStr(dep)}')" class="w-full text-left py-1.5 px-2 rounded-lg hover:bg-emerald-800/50 text-emerald-100 transition-colors cursor-pointer block truncate text-xs font-medium">
-                                    • ${dep}
-                                </button>
-                            </li>
-                        `).join('')}
-                    </ul>
-                `;
-                container.appendChild(facultyBlock);
+                // Красивый заголовок Факультета
+                const title = document.createElement('div');
+                title.className = 'text-[10px] font-black tracking-wider text-emerald-400 uppercase mb-2 break-words leading-tight opacity-90';
+                title.innerText = faculty;
+                block.appendChild(title);
+
+                const list = document.createElement('ul');
+                list.className = 'space-y-0.5';
+
+                for (const dep in db[faculty]) {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <button onclick="selectDepartment('${escapeStr(faculty)}', '${escapeStr(dep)}', this)" class="w-full text-left py-1.5 px-2.5 rounded-xl hover:bg-emerald-900/60 text-emerald-100/90 transition-all cursor-pointer text-xs font-medium truncate block border border-transparent hover:border-emerald-800/30">
+                            ${dep}
+                        </button>
+                    `;
+                    list.appendChild(li);
+                }
+                block.appendChild(list);
+                menu.appendChild(block);
             }
         }
 
-        // Переключение направления и отрисовка соответствующей таблицы
-        function selectDepartment(faculty, dep) {
+        // --- МОБИЛКА: Заполнение селектора факультетов ---
+        function initMobileSelectors() {
+            const facSelect = document.getElementById('mobile-faculty-select');
+            facSelect.innerHTML = '<option value="">-- Выберите факультет --</option>';
+
+            for (const faculty in db) {
+                const opt = document.createElement('option');
+                opt.value = faculty;
+                opt.innerText = faculty.length > 50 ? faculty.substring(0, 50) + '...' : faculty;
+                facSelect.appendChild(opt);
+            }
+        }
+
+        function onMobileFacultyChange() {
+            const facSelect = document.getElementById('mobile-faculty-select');
+            const depSelect = document.getElementById('mobile-dep-select');
+            const selectedFaculty = facSelect.value;
+
+            depSelect.innerHTML = '<option value="">-- Выберите направление --</option>';
+
+            if (!selectedFaculty) {
+                depSelect.disabled = true;
+                return;
+            }
+
+            depSelect.disabled = false;
+            for (const dep in db[selectedFaculty]) {
+                const opt = document.createElement('option');
+                opt.value = dep;
+                opt.innerText = dep;
+                depSelect.appendChild(opt);
+            }
+        }
+
+        function onMobileDepChange() {
+            const facSelect = document.getElementById('mobile-faculty-select');
+            const depSelect = document.getElementById('mobile-dep-select');
+            if (facSelect.value && depSelect.value) {
+                selectDepartment(facSelect.value, depSelect.value, null);
+            }
+        }
+
+        // --- ОБЩЕЕ: Логика выбора направления и рендеринга таблицы ---
+        function selectDepartment(faculty, dep, element) {
+            // Прячем велком-скрин, показываем контент
             document.getElementById('welcome-message').classList.add('hidden');
             document.getElementById('current-info').classList.remove('hidden');
             document.getElementById('table-card').classList.remove('hidden');
 
+            // Заполняем инфо-карточку
             document.getElementById('info-faculty').innerText = faculty;
             document.getElementById('info-dep').innerText = dep;
 
-            const students = globalDatabase[faculty][dep] || [];
-            document.getElementById('info-count').innerText = `Всего подано заявлений: ${students.length}`;
+            const students = db[faculty][dep] || [];
+            document.getElementById('info-count').innerText = `Всего: ${students.length}`;
 
+            // Подсветка активного пункта в меню на ПК
+            if (element) {
+                if (activeActiveBtn) {
+                    activeActiveBtn.classList.remove('bg-emerald-800', 'text-white', 'font-bold shadow-inner');
+                }
+                element.classList.add('bg-emerald-800', 'text-white', 'font-bold shadow-inner');
+                activeActiveBtn = element;
+            }
+
+            // Рендерим строки таблицы
             const tbody = document.getElementById('table-body');
             if (students.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-gray-400 font-medium">Нет зарегистрированных абитуриентов</td></tr>`;
+                tbody.innerHTML = `<tr><td colspan="5" class="p-8 text-center text-gray-400 font-medium">Нет данных абитуриентов</td></tr>`;
                 return;
             }
 
             tbody.innerHTML = students.map(st => `
-                <tr class="border-b border-gray-100 hover:bg-emerald-50/40 odd:bg-gray-50/20 transition-colors">
-                    <td class="p-3 text-center text-gray-500 font-medium">${st.id}</td>
+                <tr class="hover:bg-emerald-50/40 odd:bg-gray-50/40 transition-colors">
+                    <td class="p-3 text-center text-gray-400 font-bold">${st.id}</td>
                     <td class="p-3">
-                        <button onclick="openModal('${st.photoUrl}')" class="text-emerald-700 hover:text-emerald-900 underline font-bold tracking-wide cursor-pointer text-left focus:outline-none">
-                            ${st.regNum}
+                        <button onclick="openModal('${st.photoUrl}', '${st.regNum}')" class="text-emerald-700 hover:text-emerald-900 active:text-emerald-950 font-bold tracking-wide cursor-pointer text-left block w-full py-1 focus:outline-none touch-manipulation">
+                            ${st.regNum} 📱
                         </button>
                     </td>
-                    <td class="p-3 font-semibold text-gray-800">${st.score}</td>
-                    <td class="p-3 text-gray-600">${st.langScore || '-'}</td>
-                    <td class="p-3 text-gray-400 text-xs">${st.regDate}</td>
+                    <td class="p-3 font-bold text-gray-800 text-sm">${st.score}</td>
+                    <td class="p-3 text-gray-600 font-medium">${st.langScore || '-'}</td>
+                    <td class="p-3 text-gray-400 text-xs hidden sm:table-cell">${st.regDate}</td>
                 </tr>
             `).join('');
         }
 
-        // Модалка управления фотографиями
-        function openModal(url) {
+        // --- УПРАВЛЕНИЕ МОДАЛЬНЫМ ОКНОМ ---
+        function openModal(url, regNum) {
             const modal = document.getElementById('photo-modal');
             const img = document.getElementById('modal-img');
+            document.getElementById('modal-title-id').innerText = `№ ${regNum}`;
+
             img.src = url;
-            img.onerror = () => { img.src = 'https://via.placeholder.com/150x200?text=Фото+отсутствует'; };
+            // Резервная заглушка, если сервер Манаса выдаст 404
+            img.onerror = () => {
+                img.src = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=250&h=330&q=80';
+            };
+
             modal.classList.remove('hidden');
         }
 
@@ -156,11 +278,11 @@
             document.getElementById('photo-modal').classList.add('hidden');
         }
 
-        // Вспомогательная очистка строк для вызовов функций внутри HTML
         function escapeStr(str) {
             return str.replace(/'/g, "\\'");
         }
 
+        // Старт
         init();
     </script>
 </body>
