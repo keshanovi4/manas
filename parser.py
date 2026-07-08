@@ -1,121 +1,171 @@
 import json
+import os
+import tempfile
 import time
+from pathlib import Path
 from urllib.parse import urljoin
+
 import requests
 from bs4 import BeautifulSoup
 
-# Отключаем предупреждения об SSL
 requests.packages.urllib3.disable_warnings()
+
+MAIN_URL = "https://abiturient.manas.edu.kg/page/index.php?r=site%2Fmonitoring-all-deps"
+OUTPUT_FILE = Path("data.json")
+REQUEST_TIMEOUT = 30
+PAUSE_SECONDS = 0.3
+HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+        "AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/120.0.0.0 Safari/537.36"
+    )
+}
+
+
+def build_session():
+    session = requests.Session()
+    session.headers.update(HEADERS)
+    return session
+
+
+def fetch_soup(session, url):
+    response = session.get(url, timeout=REQUEST_TIMEOUT, verify=False)
+    response.raise_for_status()
+    return BeautifulSoup(response.text, "html.parser")
+
+
+def extract_department_links(soup):
+    department_links = []
+    seen_urls = set()
+
+    for link in soup.find_all("a", href=True):
+        href = link["href"]
+        name = link.get_text(strip=True)
+
+        if "r=site" not in href or "monitoring-all-deps" in href or not name:
+            continue
+
+        full_url = urljoin(MAIN_URL, href)
+        if full_url in seen_urls:
+            continue
+
+        seen_urls.add(full_url)
+        department_links.append({"name": name, "url": full_url})
+
+    return department_links
+
+
+def extract_faculty_name(soup):
+    for heading in soup.find_all(["h1", "h2", "h3"]):
+        heading_text = heading.get_text(" ", strip=True)
+        if "ФАКУЛЬТЕТ" in heading_text.upper():
+            return heading_text
+    return "ОБЩИЙ СПИСОК"
+
+
+def extract_applicants(soup):
+    applicants = []
+    table = soup.find("table")
+
+    if not table:
+        return applicants
+
+    for row in table.find_all("tr"):
+        cells = row.find_all(["td", "th"])
+        if len(cells) < 5:
+            continue
+
+        reg_num = cells[1].get_text(" ", strip=True)
+        if "Регистрационный" in reg_num or "Номер" in reg_num or not reg_num:
+            continue
+
+        number = cells[0].get_text(" ", strip=True)
+        score = cells[2].get_text(" ", strip=True)
+        lang_score = cells[3].get_text(" ", strip=True)
+        reg_date = cells[4].get_text(" ", strip=True)
+        clean_id = "".join(char for char in reg_num if char.isdigit())
+
+        if not clean_id:
+            continue
+
+        applicants.append(
+            {
+                "id": number,
+                "regNum": reg_num,
+                "score": score,
+                "langScore": lang_score,
+                "regDate": reg_date,
+                "photoUrl": (
+                    "https://abiturient.manas.edu.kg/page/uploads/photo/"
+                    f"{clean_id}.jpg"
+                ),
+            }
+        )
+
+    return applicants
+
+
+def write_json_atomically(payload, output_path):
+    output_path = Path(output_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+
+    temp_name = None
+    try:
+        with tempfile.NamedTemporaryFile(
+            "w",
+            delete=False,
+            dir=output_path.parent,
+            prefix=f"{output_path.stem}.",
+            suffix=".tmp",
+            encoding="utf-8",
+        ) as temp_file:
+            json.dump(payload, temp_file, ensure_ascii=False, indent=2)
+            temp_name = temp_file.name
+
+        os.replace(temp_name, output_path)
+    finally:
+        if temp_name and os.path.exists(temp_name):
+            os.remove(temp_name)
 
 
 def parse_all_manas_data():
-    main_url = "https://abiturient.manas.edu.kg/page/index.php?r=site%2Fmonitoring-all-deps"
-    headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    }
-
-    print("Шаг 1: Собираем список всех направлений...")
-    try:
-        response = requests.get(main_url, headers=headers, verify=False)
-    except Exception as e:
-        print(f"Не удалось загрузить главную страницу: {e}")
-        return
-
-    soup = BeautifulSoup(response.text, "html.parser")
-
-    dep_links = []
-    for a in soup.find_all("a", href=True):
-        href = a["href"]
-        text = a.text.strip()
-
-        if "r=site" in href and "monitoring-all-deps" not in href and text:
-            full_url = urljoin(main_url, href)
-            if full_url not in [d["url"] for d in dep_links]:
-                dep_links.append({"name": text, "url": full_url})
-
-    print(f"Успешно найдено направлений: {len(dep_links)}")
+    print("Шаг 1: собираем список всех направлений...")
+    session = build_session()
+    department_links = extract_department_links(fetch_soup(session, MAIN_URL))
+    print(f"Успешно найдено направлений: {len(department_links)}")
 
     all_data = {}
+    errors = []
 
-    print("\nШаг 2: Начинаем обход каждого направления...")
-    for index, dep in enumerate(dep_links, 1):
-        print(
-            f"[{index}/{len(dep_links)}] Скачиваем данные: {dep['name']}..."
-        )
+    print("\nШаг 2: начинаем обход каждого направления...")
+    for index, department in enumerate(department_links, 1):
+        print(f"[{index}/{len(department_links)}] Загружаем данные: {department['name']}...")
 
         try:
-            dep_response = requests.get(dep["url"], headers=headers, verify=False)
-            dep_soup = BeautifulSoup(dep_response.text, "html.parser")
-
-            # Ищем название факультета
-            faculty_name = "ОБЩИЙ СПИСОК"
-            for heading in dep_soup.find_all(["h1", "h2", "h3"]):
-                if "ФАКУЛЬТЕТ" in heading.text.upper():
-                    faculty_name = heading.text.strip()
-                    break
-
-            applicants = []
-
-            # Ищем ПЕРВУЮ попавшуюся таблицу на странице направления
-            table = dep_soup.find("table")
-            if table:
-                # Берем вообще все строки таблицы (и с tbody, и без него)
-                rows = table.find_all("tr")
-
-                for row in rows:
-                    cells = row.find_all(["td", "th"])
-
-                    if len(cells) >= 5:
-                        reg_num = cells[1].text.strip()
-
-                        # Пропускаем строку заголовков таблицы, если она попалась
-                        if (
-                            "Регистрационный" in reg_num
-                            or "Номер" in reg_num
-                            or not reg_num
-                        ):
-                            continue
-
-                        num = cells[0].text.strip()
-                        score = cells[2].text.strip()
-                        lang_score = cells[3].text.strip()
-                        reg_date = cells[4].text.strip()
-
-                        # Очищаем номер: оставляем ТОЛЬКО цифры для названия файла фото
-                        # (Например, из '10As26009067' или ' 26009067 ' сделает '26009067')
-                        clean_id = "".join(filter(str.isdigit, reg_num))
-
-                        if clean_id:  # Если нашли хоть какие-то цифры номера
-                            applicants.append(
-                                {
-                                    "id": num,
-                                    "regNum": reg_num,  # В таблицу выводим оригинальный номер
-                                    "score": score,
-                                    "langScore": lang_score,
-                                    "regDate": reg_date,
-                                    # Ссылку генерируем по чистой цифровой части
-                                    "photoUrl": f"https://abiturient.manas.edu.kg/page/uploads/photo/{clean_id}.jpg",
-                                }
-                            )
+            department_soup = fetch_soup(session, department["url"])
+            faculty_name = extract_faculty_name(department_soup)
+            applicants = extract_applicants(department_soup)
 
             if applicants:
-                if faculty_name not in all_data:
-                    all_data[faculty_name] = {}
-                all_data[faculty_name][dep["name"]] = applicants
-                print(f"   -> УСПЕШНО! Спарсено абитуриентов: {len(applicants)}")
+                all_data.setdefault(faculty_name, {})[department["name"]] = applicants
+                print(f"   -> Успешно: {len(applicants)} записей")
             else:
-                print("   -> Таблица пустая (нет строк с данными).")
+                print("   -> Таблица пустая или данные не найдены.")
 
-            time.sleep(0.3)  # Небольшая пауза между запросами
+            time.sleep(PAUSE_SECONDS)
+        except Exception as exc:
+            message = f"Ошибка при парсинге направления {department['name']}: {exc}"
+            print(message)
+            errors.append(message)
 
-        except Exception as e:
-            print(f"Ошибка при парсинге направления {dep['name']}: {e}")
+    if errors:
+        raise RuntimeError(
+            "Парсинг завершился с ошибками, поэтому data.json не был перезаписан."
+        )
 
-    # Перезаписываем data.json
-    with open("data.json", "w", encoding="utf-8") as f:
-        json.dump(all_data, f, ensure_ascii=False, indent=2)
-
-    print("\n[ГОТОВО] Скрипт завершил работу. Проверь файл data.json!")
+    write_json_atomically(all_data, OUTPUT_FILE)
+    print("\n[ГОТОВО] Скрипт завершил работу. Файл data.json обновлен атомарно.")
 
 
 if __name__ == "__main__":
