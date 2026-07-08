@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мониторинг Абитуриентов Манас (С фото)</title>
+    <!-- Подключаем Tailwind CSS для красивых стилей -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-gray-50 font-sans p-4 md:p-8">
+
+    <div class="max-w-6xl mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
+        <!-- Шапка -->
+        <div class="p-5 bg-emerald-800 text-white">
+            <h1 class="text-xl font-bold">ФАКУЛЬТЕТ ЭКОНОМИКИ И УПРАВЛЕНИЯ</h1>
+            <p class="text-sm opacity-90">Направление: Экономика</p>
+        </div>
+
+        <!-- Таблица -->
+        <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                    <tr class="bg-gray-100 border-b border-gray-200 text-gray-700 font-semibold">
+                        <th class="p-3 text-center w-12">№</th>
+                        <th class="p-3">Регистрационный № (Кликни для фото)</th>
+                        <th class="p-3">Баллы</th>
+                        <th class="p-3">Иностранный язык</th>
+                        <th class="p-3">Дата регистрации</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Сюда JavaScript вставит строки -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Модальное окно для фотографии -->
+    <div id="photo-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-xs flex items-center justify-center z-50 p-4" onclick="closeModal()">
+        <div class="bg-white rounded-xl p-4 max-w-xs w-full relative shadow-2xl" onclick="event.stopPropagation()">
+            <button class="absolute top-2 right-3 text-gray-400 hover:text-gray-700 text-xl font-bold" onclick="closeModal()">×</button>
+            
+            <div class="mt-2 rounded-lg overflow-hidden border border-gray-200 bg-gray-50 flex items-center justify-center aspect-[3/4]">
+                <img id="modal-img" src="" alt="Фото абитуриента" class="w-full h-full object-cover">
+            </div>
+            
+            <button class="mt-4 w-full bg-emerald-700 hover:bg-emerald-800 text-white font-medium py-2 rounded-lg text-sm transition-colors" onclick="closeModal()">
+                Закрыть
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Функция для загрузки данных из JSON и отрисовки таблицы
+        async function loadRating() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                const tbody = document.getElementById('table-body');
+                
+                tbody.innerHTML = data.map(student => `
+                    <tr class="border-b border-gray-100 hover:bg-emerald-50/30 odd:bg-gray-50/30 transition-colors">
+                        <td class="p-3 text-center text-gray-500">${student.id}</td>
+                        <td class="p-3">
+                            <button onclick="openModal('${student.photoUrl}')" class="text-emerald-700 hover:text-emerald-900 underline font-bold tracking-wide cursor-pointer text-left">
+                                ${student.regNum}
+                            </button>
+                        </td>
+                        <td class="p-3 font-medium text-gray-800">${student.score}</td>
+                        <td class="p-3 text-gray-600">${student.langScore}</td>
+                        <td class="p-3 text-gray-400 text-xs">${student.regDate}</td>
+                    </tr>
+                `).join('');
+            } catch (error) {
+                console.error("Ошибка загрузки data.json:", error);
+            }
+        }
+
+        // Функции управления модалкой
+        function openModal(url) {
+            const modal = document.getElementById('photo-modal');
+            const img = document.getElementById('modal-img');
+            
+            img.src = url;
+            // Если фотки нет (404), ставим заглушку
+            img.onerror = () => {
+                img.src = 'https://via.placeholder.com/150x200?text=Нет+фото';
+            };
+            
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('photo-modal').classList.add('hidden');
+        }
+
+        // Запускаем при загрузке страницы
+        loadRating();
+    </script>
+</body>
+</html>
