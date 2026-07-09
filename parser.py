@@ -2,6 +2,7 @@ import json
 import os
 import tempfile
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from urllib.parse import urljoin
 
@@ -12,8 +13,10 @@ requests.packages.urllib3.disable_warnings()
 
 MAIN_URL = "https://abiturient.manas.edu.kg/page/index.php?r=site%2Fmonitoring-all-deps"
 OUTPUT_FILE = Path("data.json")
-REQUEST_TIMEOUT = 30
-PAUSE_SECONDS = 0.3
+REQUEST_TIMEOUT = int(os.getenv("REQUEST_TIMEOUT", "30"))
+PAUSE_SECONDS = float(os.getenv("PAUSE_SECONDS", "0"))
+MAX_WORKERS = max(1, int(os.getenv("MAX_WORKERS", "6")))
+DEFAULT_FACULTY = "ОБЩИЙ СПИСОК"
 HEADERS = {
     "User-Agent": (
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
@@ -26,22 +29,54 @@ HEADERS = {
 def build_session():
     session = requests.Session()
     session.headers.update(HEADERS)
+    session.trust_env = False
     return session
 
 
 def fetch_soup(session, url):
     response = session.get(url, timeout=REQUEST_TIMEOUT, verify=False)
     response.raise_for_status()
+    response.encoding = response.apparent_encoding or response.encoding or "utf-8"
     return BeautifulSoup(response.text, "html.parser")
+
+
+def is_faculty_heading(text):
+    normalized = " ".join(str(text).split())
+    if not normalized:
+        return False
+
+    upper_text = normalized.upper()
+    return "ФАКУЛЬТЕТ" in upper_text or "КОЛЛЕДЖ" in upper_text
+
+
+def extract_heading_text(node):
+    if node.find("a") is not None:
+        return None
+
+    text = node.get_text(" ", strip=True)
+    if not is_faculty_heading(text):
+        return None
+
+    if len(text) > 120:
+        return None
+
+    return text
 
 
 def extract_department_links(soup):
     department_links = []
     seen_urls = set()
+    current_faculty = None
 
-    for link in soup.find_all("a", href=True):
-        href = link["href"]
-        name = link.get_text(strip=True)
+    for node in soup.find_all(["div", "h1", "h2", "h3", "h4", "strong", "b", "a"]):
+        if node.name != "a":
+            heading_text = extract_heading_text(node)
+            if heading_text:
+                current_faculty = heading_text
+            continue
+
+        href = node["href"]
+        name = node.get_text(strip=True)
 
         if "r=site" not in href or "monitoring-all-deps" in href or not name:
             continue
@@ -51,17 +86,23 @@ def extract_department_links(soup):
             continue
 
         seen_urls.add(full_url)
-        department_links.append({"name": name, "url": full_url})
+        department_links.append(
+            {
+                "faculty": current_faculty or DEFAULT_FACULTY,
+                "name": name,
+                "url": full_url,
+            }
+        )
 
     return department_links
 
 
-def extract_faculty_name(soup):
-    for heading in soup.find_all(["h1", "h2", "h3"]):
+def extract_faculty_name(soup, fallback=None):
+    for heading in soup.find_all(["h1", "h2", "h3", "h4", "strong", "b"]):
         heading_text = heading.get_text(" ", strip=True)
-        if "ФАКУЛЬТЕТ" in heading_text.upper():
+        if is_faculty_heading(heading_text):
             return heading_text
-    return "ОБЩИЙ СПИСОК"
+    return fallback or DEFAULT_FACULTY
 
 
 def extract_applicants(soup):
@@ -129,6 +170,16 @@ def write_json_atomically(payload, output_path):
             os.remove(temp_name)
 
 
+def parse_department(department):
+    session = build_session()
+    department_soup = fetch_soup(session, department["url"])
+    faculty_name = department.get("faculty") or extract_faculty_name(
+        department_soup, DEFAULT_FACULTY
+    )
+    applicants = extract_applicants(department_soup)
+    return faculty_name, department["name"], applicants
+
+
 def parse_all_manas_data():
     print("Шаг 1: собираем список всех направлений...")
     session = build_session()
@@ -138,26 +189,32 @@ def parse_all_manas_data():
     all_data = {}
     errors = []
 
-    print("\nШаг 2: начинаем обход каждого направления...")
-    for index, department in enumerate(department_links, 1):
-        print(f"[{index}/{len(department_links)}] Загружаем данные: {department['name']}...")
+    print(f"\nШаг 2: загружаем данные по направлениям параллельно (workers={MAX_WORKERS})...")
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_map = {
+            executor.submit(parse_department, department): department
+            for department in department_links
+        }
 
-        try:
-            department_soup = fetch_soup(session, department["url"])
-            faculty_name = extract_faculty_name(department_soup)
-            applicants = extract_applicants(department_soup)
+        for index, future in enumerate(as_completed(future_map), 1):
+            department = future_map[future]
+            print(f"[{index}/{len(department_links)}] Загружаем данные: {department['name']}...")
 
-            if applicants:
-                all_data.setdefault(faculty_name, {})[department["name"]] = applicants
-                print(f"   -> Успешно: {len(applicants)} записей")
-            else:
-                print("   -> Таблица пустая или данные не найдены.")
+            try:
+                faculty_name, department_name, applicants = future.result()
 
-            time.sleep(PAUSE_SECONDS)
-        except Exception as exc:
-            message = f"Ошибка при парсинге направления {department['name']}: {exc}"
-            print(message)
-            errors.append(message)
+                if applicants:
+                    all_data.setdefault(faculty_name, {})[department_name] = applicants
+                    print(f"   -> Успешно: {len(applicants)} записей")
+                else:
+                    print("   -> Таблица пустая или данные не найдены.")
+
+                if PAUSE_SECONDS > 0:
+                    time.sleep(PAUSE_SECONDS)
+            except Exception as exc:
+                message = f"Ошибка при парсинге направления {department['name']}: {exc}"
+                print(message)
+                errors.append(message)
 
     if errors:
         raise RuntimeError(

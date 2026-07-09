@@ -1,0 +1,59 @@
+name: Fast refresh data
+
+on:
+  workflow_dispatch:
+    inputs:
+      max_workers:
+        description: "How many directions to fetch in parallel"
+        required: false
+        default: "12"
+      request_timeout:
+        description: "Timeout per request in seconds"
+        required: false
+        default: "20"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fast-refresh-data
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    env:
+      MAX_WORKERS: ${{ inputs.max_workers }}
+      REQUEST_TIMEOUT: ${{ inputs.request_timeout }}
+      PAUSE_SECONDS: "0"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Refresh data.json
+        run: python parser.py
+
+      - name: Commit and push if data changed
+        run: |
+          if git diff --quiet -- data.json; then
+            echo "data.json is already up to date"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data.json
+          git commit -m "chore: fast refresh data"
+          git push
