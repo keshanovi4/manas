@@ -1,71 +1,37 @@
 {
   "ГУМАНИТАРНЫЙ ФАКУЛЬТЕТ": {
-    "Социология": [
+    "Программа кыргызско-турецкого перевода (Лингвистика)": [
       {
         "id": "1",
-        "regNum": "26002951",
-        "score": "136.35",
-        "langScore": "171",
-        "regDate": "20/07/2026 10:24:52",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002951.jpg"
+        "regNum": "26008443",
+        "score": "133.56",
+        "langScore": "160",
+        "regDate": "20/07/2026 20:42:46",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008443.jpg"
       },
       {
         "id": "2",
-        "regNum": "26008297",
-        "score": "127.01",
-        "langScore": "175",
-        "regDate": "20/07/2026 09:11:37",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008297.jpg"
+        "regNum": "26006622",
+        "score": "126.31",
+        "langScore": "176",
+        "regDate": "20/07/2026 16:16:16",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006622.jpg"
       },
       {
         "id": "3",
-        "regNum": "26010860",
-        "score": "121.17",
-        "langScore": "135",
-        "regDate": "20/07/2026 15:57:07",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010860.jpg"
-      }
-    ],
-    "Программа психолого-педагогической поддержки и консультирования (Педагогика)": [
-      {
-        "id": "1",
-        "regNum": "26008491",
-        "score": "132.15",
-        "langScore": "214",
-        "regDate": "20/07/2026 10:21:52",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008491.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26009010",
-        "score": "131.67",
-        "langScore": "190",
-        "regDate": "20/07/2026 12:09:21",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009010.jpg"
-      },
-      {
-        "id": "3",
-        "regNum": "26000016",
-        "score": "129.85",
-        "langScore": "0",
-        "regDate": "20/07/2026 09:27:44",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000016.jpg"
+        "regNum": "26012519",
+        "score": "122.79",
+        "langScore": "148",
+        "regDate": "20/07/2026 09:51:57",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012519.jpg"
       },
       {
         "id": "4",
-        "regNum": "26005110",
-        "score": "123.97",
-        "langScore": "131",
-        "regDate": "20/07/2026 10:29:58",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005110.jpg"
-      },
-      {
-        "id": "5",
-        "regNum": "26000226",
-        "score": "121.87",
-        "langScore": "167",
-        "regDate": "20/07/2026 10:03:36",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000226.jpg"
+        "regNum": "26002313",
+        "score": "120.47",
+        "langScore": "157",
+        "regDate": "20/07/2026 09:51:38",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002313.jpg"
       }
     ],
     "История": [
@@ -94,24 +60,6 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012710.jpg"
       }
     ],
-    "Программа турецко-русского перевода (Лингвистика)": [
-      {
-        "id": "1",
-        "regNum": "26008555",
-        "score": "138.93",
-        "langScore": "153",
-        "regDate": "20/07/2026 10:54:46",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008555.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26003737",
-        "score": "133.33",
-        "langScore": "163",
-        "regDate": "20/07/2026 13:30:50",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003737.jpg"
-      }
-    ],
     "Тюркология (Филология)": [
       {
         "id": "1",
@@ -130,30 +78,114 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000055.jpg"
       }
     ],
-    "Программа кыргызско-турецкого перевода (Лингвистика)": [
+    "Социология": [
       {
         "id": "1",
-        "regNum": "26006622",
-        "score": "126.31",
-        "langScore": "176",
-        "regDate": "20/07/2026 16:16:16",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006622.jpg"
+        "regNum": "26002951",
+        "score": "136.35",
+        "langScore": "171",
+        "regDate": "20/07/2026 10:24:52",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002951.jpg"
       },
       {
         "id": "2",
-        "regNum": "26012519",
-        "score": "122.79",
-        "langScore": "148",
-        "regDate": "20/07/2026 09:51:57",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012519.jpg"
+        "regNum": "26008297",
+        "score": "127.01",
+        "langScore": "175",
+        "regDate": "20/07/2026 09:11:37",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008297.jpg"
       },
       {
         "id": "3",
-        "regNum": "26002313",
-        "score": "120.47",
-        "langScore": "157",
-        "regDate": "20/07/2026 09:51:38",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002313.jpg"
+        "regNum": "26007394",
+        "score": "123.03",
+        "langScore": "169",
+        "regDate": "20/07/2026 20:45:06",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007394.jpg"
+      },
+      {
+        "id": "4",
+        "regNum": "26010860",
+        "score": "121.17",
+        "langScore": "135",
+        "regDate": "20/07/2026 15:57:07",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010860.jpg"
+      }
+    ],
+    "Программа турецко-русского перевода (Лингвистика)": [
+      {
+        "id": "1",
+        "regNum": "26005143",
+        "score": "149.22",
+        "langScore": "195",
+        "regDate": "20/07/2026 19:30:40",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005143.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26008555",
+        "score": "138.93",
+        "langScore": "153",
+        "regDate": "20/07/2026 10:54:46",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008555.jpg"
+      },
+      {
+        "id": "3",
+        "regNum": "26003737",
+        "score": "133.33",
+        "langScore": "163",
+        "regDate": "20/07/2026 13:30:50",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003737.jpg"
+      }
+    ],
+    "Программа психолого-педагогической поддержки и консультирования (Педагогика)": [
+      {
+        "id": "1",
+        "regNum": "26008491",
+        "score": "132.15",
+        "langScore": "214",
+        "regDate": "20/07/2026 10:21:52",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008491.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26004575",
+        "score": "131.93",
+        "langScore": "186",
+        "regDate": "20/07/2026 20:34:28",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004575.jpg"
+      },
+      {
+        "id": "3",
+        "regNum": "26009010",
+        "score": "131.67",
+        "langScore": "190",
+        "regDate": "20/07/2026 12:09:21",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009010.jpg"
+      },
+      {
+        "id": "4",
+        "regNum": "26000016",
+        "score": "129.85",
+        "langScore": "0",
+        "regDate": "20/07/2026 09:27:44",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000016.jpg"
+      },
+      {
+        "id": "5",
+        "regNum": "26005110",
+        "score": "123.97",
+        "langScore": "131",
+        "regDate": "20/07/2026 10:29:58",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005110.jpg"
+      },
+      {
+        "id": "6",
+        "regNum": "26000226",
+        "score": "121.87",
+        "langScore": "167",
+        "regDate": "20/07/2026 10:03:36",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000226.jpg"
       }
     ],
     "Программа  кыргызского языка и литературы (Филология)": [
@@ -168,24 +200,6 @@
     ]
   },
   "ФАКУЛЬТЕТ ЭКОНОМИКИ И УПРАВЛЕНИЯ": {
-    "Финансы и кредит (Экономика)": [
-      {
-        "id": "1",
-        "regNum": "26006272",
-        "score": "133.88",
-        "langScore": "61.54",
-        "regDate": "20/07/2026 10:52:26",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006272.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26003287",
-        "score": "133.42",
-        "langScore": "64.99",
-        "regDate": "20/07/2026 09:03:18",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003287.jpg"
-      }
-    ],
     "Экономика": [
       {
         "id": "1",
@@ -194,6 +208,14 @@
         "langScore": "71.9",
         "regDate": "20/07/2026 12:32:39",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002727.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26001710",
+        "score": "120.82",
+        "langScore": "61.54",
+        "regDate": "20/07/2026 19:51:51",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001710.jpg"
       }
     ],
     "Международные отношения": [
@@ -212,6 +234,34 @@
         "langScore": "61.54",
         "regDate": "20/07/2026 11:01:14",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009309.jpg"
+      }
+    ],
+    "Финансы и кредит (Экономика)": [
+      {
+        "id": "1",
+        "regNum": "26006272",
+        "score": "133.88",
+        "langScore": "61.54",
+        "regDate": "20/07/2026 10:52:26",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006272.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26003287",
+        "score": "133.42",
+        "langScore": "64.99",
+        "regDate": "20/07/2026 09:03:18",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003287.jpg"
+      }
+    ],
+    "Менеджмент": [
+      {
+        "id": "1",
+        "regNum": "26005271",
+        "score": "128.65",
+        "langScore": "63.27",
+        "regDate": "20/07/2026 19:23:07",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005271.jpg"
       }
     ]
   },
@@ -262,6 +312,32 @@
     ]
   },
   "ИНЖЕНЕРНЫЙ ФАКУЛЬТЕТ": {
+    "Экология и природопользование": [
+      {
+        "id": "1",
+        "regNum": "26001437",
+        "score": "131.83",
+        "langScore": "173",
+        "regDate": "20/07/2026 19:23:22",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001437.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26006945",
+        "score": "131.77",
+        "langScore": "203",
+        "regDate": "20/07/2026 13:49:11",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006945.jpg"
+      },
+      {
+        "id": "3",
+        "regNum": "26010924",
+        "score": "128.13",
+        "langScore": "170",
+        "regDate": "20/07/2026 14:15:25",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010924.jpg"
+      }
+    ],
     "Программная инженерия": [
       {
         "id": "1",
@@ -310,11 +386,45 @@
         "langScore": "168",
         "regDate": "20/07/2026 11:11:34",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26013777.jpg"
+      },
+      {
+        "id": "7",
+        "regNum": "26011443",
+        "score": "123.94",
+        "langScore": "144",
+        "regDate": "20/07/2026 19:03:03",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26011443.jpg"
+      }
+    ],
+    "Технология продукции и организация общественного питания": [
+      {
+        "id": "1",
+        "regNum": "26009317",
+        "score": "139.17",
+        "langScore": "159",
+        "regDate": "20/07/2026 19:27:41",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009317.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26011101",
+        "score": "124.49",
+        "langScore": "167",
+        "regDate": "20/07/2026 09:47:20",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26011101.jpg"
       }
     ],
     "Искусственный интеллект и инженерия данных": [
       {
         "id": "1",
+        "regNum": "26007759",
+        "score": "153.85",
+        "langScore": "209",
+        "regDate": "20/07/2026 19:24:01",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007759.jpg"
+      },
+      {
+        "id": "2",
         "regNum": "26006836",
         "score": "151.22",
         "langScore": "208",
@@ -322,7 +432,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006836.jpg"
       },
       {
-        "id": "2",
+        "id": "3",
         "regNum": "26013209",
         "score": "144.95",
         "langScore": "191",
@@ -330,7 +440,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26013209.jpg"
       },
       {
-        "id": "3",
+        "id": "4",
         "regNum": "26004518",
         "score": "136.02",
         "langScore": "171",
@@ -338,7 +448,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004518.jpg"
       },
       {
-        "id": "4",
+        "id": "5",
         "regNum": "26005980",
         "score": "120.85",
         "langScore": "149",
@@ -396,34 +506,6 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009726.jpg"
       }
     ],
-    "Экология и природопользование": [
-      {
-        "id": "1",
-        "regNum": "26006945",
-        "score": "131.77",
-        "langScore": "203",
-        "regDate": "20/07/2026 13:49:11",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006945.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26010924",
-        "score": "128.13",
-        "langScore": "170",
-        "regDate": "20/07/2026 14:15:25",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010924.jpg"
-      }
-    ],
-    "Технология продукции и организация общественного питания": [
-      {
-        "id": "1",
-        "regNum": "26011101",
-        "score": "124.49",
-        "langScore": "167",
-        "regDate": "20/07/2026 09:47:20",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26011101.jpg"
-      }
-    ],
     "Электроника и электрическая инженерия": [
       {
         "id": "1",
@@ -465,6 +547,28 @@
         "regDate": "20/07/2026 17:30:55",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000541.jpg"
       }
+    ],
+    "Промышленная инженерия": [
+      {
+        "id": "1",
+        "regNum": "26000912",
+        "score": "123.94",
+        "langScore": "196",
+        "regDate": "20/07/2026 19:38:50",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000912.jpg"
+      }
+    ]
+  },
+  "СЕЛЬСКОХОЗЯЙСТВЕННЫЙ ФАКУЛЬТЕТ": {
+    "Плодоовощеводство (Агрономия)": [
+      {
+        "id": "1",
+        "regNum": "26002614",
+        "score": "122.9",
+        "langScore": "154",
+        "regDate": "20/07/2026 09:20:13",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002614.jpg"
+      }
     ]
   },
   "ФАКУЛЬТЕТ ТУРИЗМА": {
@@ -497,30 +601,6 @@
       }
     ]
   },
-  "ВЕТЕРИНАРНЫЙ ФАКУЛЬТЕТ": {
-    "Ветеринария": [
-      {
-        "id": "1",
-        "regNum": "26001895",
-        "score": "132.35",
-        "langScore": "182",
-        "regDate": "20/07/2026 16:31:38",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001895.jpg"
-      }
-    ]
-  },
-  "СЕЛЬСКОХОЗЯЙСТВЕННЫЙ ФАКУЛЬТЕТ": {
-    "Плодоовощеводство (Агрономия)": [
-      {
-        "id": "1",
-        "regNum": "26002614",
-        "score": "122.9",
-        "langScore": "154",
-        "regDate": "20/07/2026 09:20:13",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002614.jpg"
-      }
-    ]
-  },
   "ФАКУЛЬТЕТ ЕСТЕСТВЕННЫХ НАУК": {
     "Прикладная математика и информатика": [
       {
@@ -548,6 +628,16 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004627.jpg"
       }
     ],
+    "Биология": [
+      {
+        "id": "1",
+        "regNum": "26005424",
+        "score": "128.65",
+        "langScore": "196",
+        "regDate": "20/07/2026 16:39:19",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005424.jpg"
+      }
+    ],
     "Математика": [
       {
         "id": "1",
@@ -573,15 +663,17 @@
         "regDate": "20/07/2026 10:02:51",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004306.jpg"
       }
-    ],
-    "Биология": [
+    ]
+  },
+  "ВЕТЕРИНАРНЫЙ ФАКУЛЬТЕТ": {
+    "Ветеринария": [
       {
         "id": "1",
-        "regNum": "26005424",
-        "score": "128.65",
-        "langScore": "196",
-        "regDate": "20/07/2026 16:39:19",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005424.jpg"
+        "regNum": "26001895",
+        "score": "132.35",
+        "langScore": "182",
+        "regDate": "20/07/2026 16:31:38",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001895.jpg"
       }
     ]
   },
@@ -605,6 +697,14 @@
       },
       {
         "id": "3",
+        "regNum": "26005792",
+        "score": "105.59",
+        "langScore": "105.95",
+        "regDate": "105.77",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005792.jpg"
+      },
+      {
+        "id": "4",
         "regNum": "26004398",
         "score": "102.44",
         "langScore": "105.25",
@@ -612,7 +712,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004398.jpg"
       },
       {
-        "id": "4",
+        "id": "5",
         "regNum": "26005167",
         "score": "95.59",
         "langScore": "114.85",
@@ -620,7 +720,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005167.jpg"
       },
       {
-        "id": "5",
+        "id": "6",
         "regNum": "26006753",
         "score": "98.77",
         "langScore": "102.21",
@@ -628,7 +728,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006753.jpg"
       },
       {
-        "id": "6",
+        "id": "7",
         "regNum": "26013351",
         "score": "105.59",
         "langScore": "105.95",
@@ -636,7 +736,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26013351.jpg"
       },
       {
-        "id": "7",
+        "id": "8",
         "regNum": "26004528",
         "score": "114.55",
         "langScore": "92.38",
@@ -644,7 +744,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004528.jpg"
       },
       {
-        "id": "8",
+        "id": "9",
         "regNum": "26009884",
         "score": "99.81",
         "langScore": "106.89",
@@ -652,7 +752,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009884.jpg"
       },
       {
-        "id": "9",
+        "id": "10",
         "regNum": "26002376",
         "score": "101.92",
         "langScore": "102.91",
@@ -660,7 +760,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002376.jpg"
       },
       {
-        "id": "10",
+        "id": "11",
         "regNum": "26005345",
         "score": "101.92",
         "langScore": "102.91",
@@ -668,7 +768,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005345.jpg"
       },
       {
-        "id": "11",
+        "id": "12",
         "regNum": "26000099",
         "score": "113.42",
         "langScore": "127.71",
@@ -676,7 +776,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000099.jpg"
       },
       {
-        "id": "12",
+        "id": "13",
         "regNum": "26007150",
         "score": "106.14",
         "langScore": "94.96",
@@ -684,7 +784,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007150.jpg"
       },
       {
-        "id": "13",
+        "id": "14",
         "regNum": "26002387",
         "score": "102.5",
         "langScore": "78.58",
@@ -692,7 +792,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002387.jpg"
       },
       {
-        "id": "14",
+        "id": "15",
         "regNum": "26010934",
         "score": "102.96",
         "langScore": "107.59",
@@ -700,7 +800,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010934.jpg"
       },
       {
-        "id": "15",
+        "id": "16",
         "regNum": "26003171",
         "score": "115.04",
         "langScore": "108.05",
@@ -708,7 +808,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003171.jpg"
       },
       {
-        "id": "16",
+        "id": "17",
         "regNum": "26011071",
         "score": "104.06",
         "langScore": "85.6",
@@ -716,7 +816,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26011071.jpg"
       },
       {
-        "id": "17",
+        "id": "18",
         "regNum": "26001460",
         "score": "102.44",
         "langScore": "105.25",
@@ -724,7 +824,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001460.jpg"
       },
       {
-        "id": "18",
+        "id": "19",
         "regNum": "26002315",
         "score": "102.47",
         "langScore": "91.92",
@@ -732,7 +832,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002315.jpg"
       },
       {
-        "id": "19",
+        "id": "20",
         "regNum": "26009873",
         "score": "114.52",
         "langScore": "105.71",
@@ -740,7 +840,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009873.jpg"
       },
       {
-        "id": "20",
+        "id": "21",
         "regNum": "26005969",
         "score": "116.63",
         "langScore": "101.74",
@@ -847,6 +947,14 @@
       },
       {
         "id": "13",
+        "regNum": "26007356",
+        "score": "101.98",
+        "langScore": "76.24",
+        "regDate": "89.11",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007356.jpg"
+      },
+      {
+        "id": "14",
         "regNum": "26010873",
         "score": "96.14",
         "langScore": "103.85",
@@ -854,7 +962,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010873.jpg"
       },
       {
-        "id": "14",
+        "id": "15",
         "regNum": "26005587",
         "score": "100.85",
         "langScore": "111.57",
@@ -862,7 +970,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005587.jpg"
       },
       {
-        "id": "15",
+        "id": "16",
         "regNum": "26012691",
         "score": "95.07",
         "langScore": "112.51",
@@ -870,7 +978,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012691.jpg"
       },
       {
-        "id": "16",
+        "id": "17",
         "regNum": "26000002",
         "score": "113.48",
         "langScore": "101.04",
@@ -878,7 +986,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000002.jpg"
       },
       {
-        "id": "17",
+        "id": "18",
         "regNum": "26011409",
         "score": "100.85",
         "langScore": "111.57",
@@ -886,7 +994,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26011409.jpg"
       },
       {
-        "id": "18",
+        "id": "19",
         "regNum": "26011172",
         "score": "101.4",
         "langScore": "100.57",
@@ -894,7 +1002,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26011172.jpg"
       },
       {
-        "id": "19",
+        "id": "20",
         "regNum": "26004800",
         "score": "92.99",
         "langScore": "103.15",
@@ -903,219 +1011,17 @@
       }
     ]
   },
-  "ФАКУЛЬТЕТ ТЕОЛОГИИ": {
-    "Теология": [
+  "КОЛЛЕДЖ СРЕДНЕГО ПРОФЕССИОНАЛЬНОГО ОБРАЗОВАНИЯ (2-Х ГОДИЧНЫЙ)": {
+    "Образовательная программа «Строительство и эксплуатация зданий и сооружений»": [
       {
         "id": "1",
-        "regNum": "26004981",
-        "score": "139.16",
-        "langScore": "166",
-        "regDate": "20/07/2026 11:45:01",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004981.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26006036",
-        "score": "135.66",
-        "langScore": "147",
-        "regDate": "20/07/2026 13:55:36",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006036.jpg"
-      },
-      {
-        "id": "3",
-        "regNum": "26006330",
-        "score": "128.41",
-        "langScore": "164",
-        "regDate": "20/07/2026 09:53:56",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006330.jpg"
-      },
-      {
-        "id": "4",
-        "regNum": "26004368",
-        "score": "128.17",
-        "langScore": "146",
-        "regDate": "20/07/2026 11:14:58",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004368.jpg"
-      },
-      {
-        "id": "5",
-        "regNum": "26005413",
-        "score": "127.71",
-        "langScore": "167",
-        "regDate": "20/07/2026 12:21:14",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005413.jpg"
-      },
-      {
-        "id": "6",
-        "regNum": "26008384",
-        "score": "127.71",
-        "langScore": "151",
-        "regDate": "20/07/2026 10:57:04",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008384.jpg"
-      },
-      {
-        "id": "7",
-        "regNum": "26007573",
-        "score": "127.71",
-        "langScore": "144",
-        "regDate": "20/07/2026 10:09:10",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007573.jpg"
-      },
-      {
-        "id": "8",
-        "regNum": "26003493",
-        "score": "126.53",
-        "langScore": "182",
-        "regDate": "20/07/2026 10:30:04",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003493.jpg"
-      },
-      {
-        "id": "9",
-        "regNum": "26004240",
-        "score": "126.31",
-        "langScore": "169",
-        "regDate": "20/07/2026 10:49:16",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004240.jpg"
-      },
-      {
-        "id": "10",
-        "regNum": "26004268",
-        "score": "124.67",
-        "langScore": "173",
-        "regDate": "20/07/2026 09:03:49",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004268.jpg"
-      },
-      {
-        "id": "11",
-        "regNum": "26002662",
-        "score": "121.41",
-        "langScore": "173",
-        "regDate": "20/07/2026 11:57:09",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002662.jpg"
-      },
-      {
-        "id": "12",
-        "regNum": "26006010",
-        "score": "119.53",
-        "langScore": "200",
-        "regDate": "20/07/2026 11:18:49",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006010.jpg"
-      },
-      {
-        "id": "13",
-        "regNum": "26001735",
-        "score": "119.53",
-        "langScore": "142",
-        "regDate": "20/07/2026 17:19:01",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001735.jpg"
-      },
-      {
-        "id": "14",
-        "regNum": "26008479",
-        "score": "118.59",
-        "langScore": "165",
-        "regDate": "20/07/2026 11:20:55",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008479.jpg"
-      },
-      {
-        "id": "15",
-        "regNum": "26002188",
-        "score": "118.35",
-        "langScore": "206",
-        "regDate": "20/07/2026 17:38:54",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002188.jpg"
-      },
-      {
-        "id": "16",
-        "regNum": "26006092",
-        "score": "116.95",
-        "langScore": "145",
-        "regDate": "20/07/2026 09:47:11",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006092.jpg"
-      },
-      {
-        "id": "17",
-        "regNum": "26005808",
-        "score": "116.71",
-        "langScore": "136",
-        "regDate": "20/07/2026 11:13:26",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005808.jpg"
-      },
-      {
-        "id": "18",
-        "regNum": "26007585",
-        "score": "116.01",
-        "langScore": "124",
-        "regDate": "20/07/2026 11:20:33",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007585.jpg"
-      },
-      {
-        "id": "19",
-        "regNum": "26010660",
-        "score": "115.55",
-        "langScore": "147",
-        "regDate": "20/07/2026 18:19:59",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010660.jpg"
-      },
-      {
-        "id": "20",
-        "regNum": "26006887",
-        "score": "115.07",
-        "langScore": "159",
-        "regDate": "20/07/2026 12:58:03",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006887.jpg"
-      },
-      {
-        "id": "21",
-        "regNum": "26012218",
-        "score": "114.85",
-        "langScore": "137",
-        "regDate": "20/07/2026 11:52:14",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012218.jpg"
-      },
-      {
-        "id": "22",
-        "regNum": "26009640",
-        "score": "114.61",
-        "langScore": "150",
-        "regDate": "20/07/2026 12:08:58",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009640.jpg"
-      },
-      {
-        "id": "23",
-        "regNum": "26007531",
-        "score": "113.43",
-        "langScore": "194",
-        "regDate": "20/07/2026 09:50:04",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007531.jpg"
-      },
-      {
-        "id": "24",
-        "regNum": "26010731",
-        "score": "113.43",
-        "langScore": "136",
-        "regDate": "20/07/2026 14:39:14",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010731.jpg"
-      },
-      {
-        "id": "25",
-        "regNum": "26006478",
-        "score": "112.73",
-        "langScore": "133",
-        "regDate": "20/07/2026 09:13:35",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006478.jpg"
-      },
-      {
-        "id": "26",
-        "regNum": "26003627",
-        "score": "110.87",
-        "langScore": "134",
-        "regDate": "20/07/2026 09:15:07",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003627.jpg"
+        "regNum": "26008289",
+        "score": "149.14",
+        "langScore": "192",
+        "regDate": "20/07/2026 14:21:59",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008289.jpg"
       }
-    ]
-  },
-  "КОЛЛЕДЖ СРЕДНЕГО ПРОФЕССИОНАЛЬНОГО ОБРАЗОВАНИЯ (2-Х ГОДИЧНЫЙ)": {
+    ],
     "Образовательная программа «Экономика и бухгалтерский учет» (по отраслям)": [
       {
         "id": "1",
@@ -1142,6 +1048,78 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006682.jpg"
       }
     ],
+    "Образовательная программа «Дошкольное образование»": [
+      {
+        "id": "1",
+        "regNum": "26010285",
+        "score": "113.42",
+        "langScore": "151",
+        "regDate": "20/07/2026 13:27:34",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010285.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26003841",
+        "score": "111.05",
+        "langScore": "208",
+        "regDate": "20/07/2026 10:51:39",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003841.jpg"
+      }
+    ],
+    "Образовательная программа «Технология деревообработки, дизайн и конструирование мебели»": [
+      {
+        "id": "1",
+        "regNum": "26012323",
+        "score": "139.2",
+        "langScore": "174",
+        "regDate": "20/07/2026 16:33:37",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012323.jpg"
+      }
+    ],
+    "Образовательная программа «Туризм»": [
+      {
+        "id": "1",
+        "regNum": "26000510",
+        "score": "116.27",
+        "langScore": "118",
+        "regDate": "20/07/2026 10:49:04",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000510.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26001687",
+        "score": "114.41",
+        "langScore": "123",
+        "regDate": "20/07/2026 09:00:49",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001687.jpg"
+      },
+      {
+        "id": "3",
+        "regNum": "26003663",
+        "score": "112.54",
+        "langScore": "186",
+        "regDate": "20/07/2026 10:18:27",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003663.jpg"
+      },
+      {
+        "id": "4",
+        "regNum": "26008287",
+        "score": "111.49",
+        "langScore": "127",
+        "regDate": "20/07/2026 11:07:59",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008287.jpg"
+      }
+    ],
+    "Образовательная программа «Маркетинг» (по отраслям)": [
+      {
+        "id": "1",
+        "regNum": "26012347",
+        "score": "112.92",
+        "langScore": "162",
+        "regDate": "20/07/2026 14:10:15",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012347.jpg"
+      }
+    ],
     "Образовательная программа «Mенеджмент» (по отраслям)": [
       {
         "id": "1",
@@ -1161,6 +1139,14 @@
       },
       {
         "id": "3",
+        "regNum": "26002535",
+        "score": "118.13",
+        "langScore": "149",
+        "regDate": "20/07/2026 18:44:23",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002535.jpg"
+      },
+      {
+        "id": "4",
         "regNum": "26007709",
         "score": "117.89",
         "langScore": "164",
@@ -1168,7 +1154,15 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007709.jpg"
       },
       {
-        "id": "4",
+        "id": "5",
+        "regNum": "26010089",
+        "score": "117.43",
+        "langScore": "122",
+        "regDate": "20/07/2026 19:07:02",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010089.jpg"
+      },
+      {
+        "id": "6",
         "regNum": "26001037",
         "score": "117.41",
         "langScore": "156",
@@ -1176,7 +1170,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001037.jpg"
       },
       {
-        "id": "5",
+        "id": "7",
         "regNum": "26000377",
         "score": "113.91",
         "langScore": "145",
@@ -1184,7 +1178,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000377.jpg"
       },
       {
-        "id": "6",
+        "id": "8",
         "regNum": "26000782",
         "score": "110.63",
         "langScore": "149",
@@ -1192,7 +1186,7 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000782.jpg"
       },
       {
-        "id": "7",
+        "id": "9",
         "regNum": "26005914",
         "score": "110.63",
         "langScore": "133",
@@ -1200,50 +1194,12 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005914.jpg"
       },
       {
-        "id": "8",
+        "id": "10",
         "regNum": "26003099",
         "score": "110.17",
         "langScore": "118",
         "regDate": "20/07/2026 11:20:49",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003099.jpg"
-      }
-    ],
-    "Образовательная программа «Строительство и эксплуатация зданий и сооружений»": [
-      {
-        "id": "1",
-        "regNum": "26008289",
-        "score": "149.14",
-        "langScore": "192",
-        "regDate": "20/07/2026 14:21:59",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008289.jpg"
-      }
-    ],
-    "Образовательная программа «Дошкольное образование»": [
-      {
-        "id": "1",
-        "regNum": "26010285",
-        "score": "113.42",
-        "langScore": "151",
-        "regDate": "20/07/2026 13:27:34",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010285.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26003841",
-        "score": "111.05",
-        "langScore": "208",
-        "regDate": "20/07/2026 10:51:39",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003841.jpg"
-      }
-    ],
-    "Образовательная программа «Маркетинг» (по отраслям)": [
-      {
-        "id": "1",
-        "regNum": "26012347",
-        "score": "112.92",
-        "langScore": "162",
-        "regDate": "20/07/2026 14:10:15",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012347.jpg"
       }
     ],
     "Образовательная программа «Программирование в компьютерных системах»": [
@@ -1304,58 +1260,250 @@
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000533.jpg"
       }
     ],
-    "Образовательная программа «Технология деревообработки, дизайн и конструирование мебели»": [
-      {
-        "id": "1",
-        "regNum": "26012323",
-        "score": "139.2",
-        "langScore": "174",
-        "regDate": "20/07/2026 16:33:37",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012323.jpg"
-      }
-    ],
-    "Образовательная программа «Туризм»": [
-      {
-        "id": "1",
-        "regNum": "26000510",
-        "score": "116.27",
-        "langScore": "118",
-        "regDate": "20/07/2026 10:49:04",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000510.jpg"
-      },
-      {
-        "id": "2",
-        "regNum": "26001687",
-        "score": "114.41",
-        "langScore": "123",
-        "regDate": "20/07/2026 09:00:49",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001687.jpg"
-      },
-      {
-        "id": "3",
-        "regNum": "26003663",
-        "score": "112.54",
-        "langScore": "186",
-        "regDate": "20/07/2026 10:18:27",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003663.jpg"
-      },
-      {
-        "id": "4",
-        "regNum": "26008287",
-        "score": "111.49",
-        "langScore": "127",
-        "regDate": "20/07/2026 11:07:59",
-        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008287.jpg"
-      }
-    ],
     "Образовательная программа «Аналитическая и операционная деятельность в сфере кибербезопасности»": [
       {
         "id": "1",
+        "regNum": "26001738",
+        "score": "137.55",
+        "langScore": "185",
+        "regDate": "20/07/2026 20:33:10",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001738.jpg"
+      },
+      {
+        "id": "2",
         "regNum": "26005002",
         "score": "135.53",
         "langScore": "140",
         "regDate": "20/07/2026 10:37:50",
         "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005002.jpg"
+      }
+    ]
+  },
+  "ФАКУЛЬТЕТ ТЕОЛОГИИ": {
+    "Теология": [
+      {
+        "id": "1",
+        "regNum": "26000285",
+        "score": "148.74",
+        "langScore": "194",
+        "regDate": "20/07/2026 18:55:04",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26000285.jpg"
+      },
+      {
+        "id": "2",
+        "regNum": "26004981",
+        "score": "139.16",
+        "langScore": "166",
+        "regDate": "20/07/2026 11:45:01",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004981.jpg"
+      },
+      {
+        "id": "3",
+        "regNum": "26006036",
+        "score": "135.66",
+        "langScore": "147",
+        "regDate": "20/07/2026 13:55:36",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006036.jpg"
+      },
+      {
+        "id": "4",
+        "regNum": "26003826",
+        "score": "130.05",
+        "langScore": "152",
+        "regDate": "20/07/2026 20:07:56",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003826.jpg"
+      },
+      {
+        "id": "5",
+        "regNum": "26006330",
+        "score": "128.41",
+        "langScore": "164",
+        "regDate": "20/07/2026 09:53:56",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006330.jpg"
+      },
+      {
+        "id": "6",
+        "regNum": "26004368",
+        "score": "128.17",
+        "langScore": "146",
+        "regDate": "20/07/2026 11:14:58",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004368.jpg"
+      },
+      {
+        "id": "7",
+        "regNum": "26005413",
+        "score": "127.71",
+        "langScore": "167",
+        "regDate": "20/07/2026 12:21:14",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005413.jpg"
+      },
+      {
+        "id": "8",
+        "regNum": "26008384",
+        "score": "127.71",
+        "langScore": "151",
+        "regDate": "20/07/2026 10:57:04",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008384.jpg"
+      },
+      {
+        "id": "9",
+        "regNum": "26007573",
+        "score": "127.71",
+        "langScore": "144",
+        "regDate": "20/07/2026 10:09:10",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007573.jpg"
+      },
+      {
+        "id": "10",
+        "regNum": "26003493",
+        "score": "126.53",
+        "langScore": "182",
+        "regDate": "20/07/2026 10:30:04",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003493.jpg"
+      },
+      {
+        "id": "11",
+        "regNum": "26004240",
+        "score": "126.31",
+        "langScore": "169",
+        "regDate": "20/07/2026 10:49:16",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004240.jpg"
+      },
+      {
+        "id": "12",
+        "regNum": "26004268",
+        "score": "124.67",
+        "langScore": "173",
+        "regDate": "20/07/2026 09:03:49",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26004268.jpg"
+      },
+      {
+        "id": "13",
+        "regNum": "26002662",
+        "score": "121.41",
+        "langScore": "173",
+        "regDate": "20/07/2026 11:57:09",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002662.jpg"
+      },
+      {
+        "id": "14",
+        "regNum": "26006010",
+        "score": "119.53",
+        "langScore": "200",
+        "regDate": "20/07/2026 11:18:49",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006010.jpg"
+      },
+      {
+        "id": "15",
+        "regNum": "26001735",
+        "score": "119.53",
+        "langScore": "142",
+        "regDate": "20/07/2026 17:19:01",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26001735.jpg"
+      },
+      {
+        "id": "16",
+        "regNum": "26008479",
+        "score": "118.59",
+        "langScore": "165",
+        "regDate": "20/07/2026 11:20:55",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26008479.jpg"
+      },
+      {
+        "id": "17",
+        "regNum": "26002188",
+        "score": "118.35",
+        "langScore": "206",
+        "regDate": "20/07/2026 17:38:54",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26002188.jpg"
+      },
+      {
+        "id": "18",
+        "regNum": "26006092",
+        "score": "116.95",
+        "langScore": "145",
+        "regDate": "20/07/2026 09:47:11",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006092.jpg"
+      },
+      {
+        "id": "19",
+        "regNum": "26005808",
+        "score": "116.71",
+        "langScore": "136",
+        "regDate": "20/07/2026 11:13:26",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26005808.jpg"
+      },
+      {
+        "id": "20",
+        "regNum": "26007585",
+        "score": "116.01",
+        "langScore": "124",
+        "regDate": "20/07/2026 11:20:33",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007585.jpg"
+      },
+      {
+        "id": "21",
+        "regNum": "26010660",
+        "score": "115.55",
+        "langScore": "147",
+        "regDate": "20/07/2026 18:19:59",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010660.jpg"
+      },
+      {
+        "id": "22",
+        "regNum": "26006887",
+        "score": "115.07",
+        "langScore": "159",
+        "regDate": "20/07/2026 12:58:03",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006887.jpg"
+      },
+      {
+        "id": "23",
+        "regNum": "26012218",
+        "score": "114.85",
+        "langScore": "137",
+        "regDate": "20/07/2026 11:52:14",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26012218.jpg"
+      },
+      {
+        "id": "24",
+        "regNum": "26009640",
+        "score": "114.61",
+        "langScore": "150",
+        "regDate": "20/07/2026 12:08:58",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26009640.jpg"
+      },
+      {
+        "id": "25",
+        "regNum": "26007531",
+        "score": "113.43",
+        "langScore": "194",
+        "regDate": "20/07/2026 09:50:04",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26007531.jpg"
+      },
+      {
+        "id": "26",
+        "regNum": "26010731",
+        "score": "113.43",
+        "langScore": "136",
+        "regDate": "20/07/2026 14:39:14",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26010731.jpg"
+      },
+      {
+        "id": "27",
+        "regNum": "26006478",
+        "score": "112.73",
+        "langScore": "133",
+        "regDate": "20/07/2026 09:13:35",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26006478.jpg"
+      },
+      {
+        "id": "28",
+        "regNum": "26003627",
+        "score": "110.87",
+        "langScore": "134",
+        "regDate": "20/07/2026 09:15:07",
+        "photoUrl": "https://abiturient.manas.edu.kg/page/uploads/photo/26003627.jpg"
       }
     ]
   }
